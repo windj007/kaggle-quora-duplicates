@@ -10,15 +10,15 @@ fi
 
 
 CMD="docker"
-if which nvidia-docker
-then
-    CMD="nvidia-docker"
-fi
+#if which nvidia-docker
+#then
+#    CMD="nvidia-docker"
+#fi
 
 $CMD run -ti --rm \
     -e "HASHED_PASSWORD=$YOUR_HASHED_PASSWORD" \
-    -e "SSL=" \
-    -v /home/rsuvorov/projects/docker-jupyter-keras-tools/certs:/jupyter/certs \
+    -e "SSL=1" \
+    -v `pwd`/certs:/jupyter/certs \
     -v `pwd`:/notebook \
     $BIND_PORT \
     kaggle-quora-duplicates \
